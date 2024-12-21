@@ -113,3 +113,74 @@ eshop
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .payment-option {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose Your Payment Method</h1>
+
+    <!-- PayPal Payment -->
+    <div class="payment-option">
+        <h2>Pay with PayPal</h2>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick">
+            <input type="hidden" name="business" value="your-email@example.com">
+            <input type="hidden" name="item_name" value="Your Product">
+            <input type="hidden" name="amount" value="20.00">
+            <input type="hidden" name="currency_code" value="USD">
+            <button type="submit">Pay with PayPal</button>
+        </form>
+    </div>
+
+    <!-- Credit Card Payment using Stripe -->
+    <div class="payment-option">
+        <h2>Pay with Credit Card</h2>
+        <form action="/create-checkout-session" method="POST">
+            <button type="submit">Pay with Stripe</button>
+        </form>
+        <script src="https://js.stripe.com/v3/"></script>
+    </div>
+
+    <!-- Cash on Delivery -->
+    <div class="payment-option">
+        <h2>Pay on Delivery</h2>
+        <form action="/submit-order" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea><br><br>
+
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+
+</body>
+</html>
